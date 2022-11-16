@@ -4,8 +4,8 @@ const router = express.Router();
 const Task = require("../models/Task");
 
 //GET request
-router.get("/", (req, res) => {
-  Task.find()
+router.get("/", async (req, res) => {
+  Task.find(req.query)
     .then((tasks) => res.json(tasks))
     .catch((err) => res.status(404).json({ notasksfound: "No tasks found" }));
 });
